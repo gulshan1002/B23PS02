@@ -17,7 +17,8 @@ if not os.path.exists(new_path):
 
 # Capture a frame from camera and show it to user to get ready
 ret, frame = video_capture.read()
-frame = cv2.flip(frame, 1, 0)  # Flip frame to show mirror image
+# Flip frame to show mirror image
+frame = cv2.flip(frame, 1, 0)
 cv2.imshow('Frame', frame)
 print('Press any key to begin')
 cv2.waitKey(0)
@@ -35,5 +36,3 @@ for i in range(200):
 
 print('DONE')  # Print "DONE" to notify user that image capture is complete
 video_capture.release()  # Release the camera
-
-

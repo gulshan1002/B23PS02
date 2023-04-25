@@ -31,7 +31,9 @@ for root, dirs, files in os.walk(dataset_path):
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Create LBP object
-lbp = cv2.face.LBPHFaceRecognizer_create()
+radius = 2
+num_neighbors = 12
+lbp = cv2.face.LBPHFaceRecognizer_create(radius, num_neighbors)
 
 # Train LBP model
 lbp.train(X_train, np.array(y_train).astype('int'))
@@ -46,7 +48,8 @@ X_train_flat = [img.reshape(-1) for img in X_train]
 X_test_flat = [img.reshape(-1) for img in X_test]
 
 # Create SVM object
-svm = SVC(kernel='linear', C=1, probability=True)
+# svm = SVC(kernel='linear', C=1, probability=True)
+svm = SVC(kernel='rbf', gamma=0.01, C=1, random_state=42, probability=True)
 
 # Fit SVM model to LBP features
 svm.fit(X_train_flat, y_train)
@@ -61,6 +64,3 @@ with open('svm_model.pkl', 'wb') as f:
     pickle.dump(svm, f)
 
 np.save('label_map.npy', label_map)
-
-
-

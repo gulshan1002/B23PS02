@@ -46,7 +46,7 @@ while True:
         #if label is not in the label_map set label as unknown
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         confidence = confidence/100 -0.8
-        cv2.putText(frame, '{} {:.2f}%'.format(label, confidence), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+        cv2.putText(frame, '{} {:.2f}'.format(label, confidence), (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
 
     # Show the resulting frame
     cv2.imshow('Video', frame)
