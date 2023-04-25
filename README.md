@@ -1,4 +1,4 @@
-# Face Recognition using OpenCV and scikit-learn #
+# Face Recognition using LBP and SVM #
 
 This is a face recognition system that uses OpenCV and scikit-learn. It detects faces in real-time video streams and recognizes them using a combination of Local Binary Patterns (LBP) and Support Vector Machines (SVM).
 
